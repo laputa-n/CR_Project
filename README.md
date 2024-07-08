@@ -1,2 +1,2 @@
 # CR_Project
-for graduation projecet
+for graduation project
