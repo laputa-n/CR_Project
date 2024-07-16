@@ -3,6 +3,7 @@
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
         <!--================== REMIXICONS ===================-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
@@ -75,26 +76,38 @@
         <!--================== LOGIN ===================-->
         <div class="login" id="login">
           <div class="overlay" id="login-overlay">
-            <div class="login__form">
-              <h2 class="login__title">ID 로그인</h2>
+            <div class="login__form" id="login-form">
+              <h2 class="login__title">로그인</h2>
 
               <div class="login__group">
                 <div>
-                  <input type="id" placeholder="아이디" id="id" class="login__input">
+                  <input type="email" placeholder="이메일" id="login-id" class="login__input">
                 </div>
 
                 <div>
-                  <input type="password" placeholder="비밀번호" id="password" class="login__input">
+                  <input type="password" placeholder="비밀번호" id="login-password" class="login__input">
                 </div>
 
                 <div>
-                  <button type="submit" class="login__button">로그인</button>
+                  <button type="submit" class="login__button" onclick="handleLogin()">로그인</button>
+                </div>
+              </div>
+
+              <div class="divider__container">
+                <div class="divider"></div>
+                <div class="divider__text">또는</div>
+                <div class="divider"></div>
+              </div>
+
+              <div class="kakao__login">
+                <div id="kakao-login-btn">
+                  <img src="kakao_login_large_wide.png">
                 </div>
               </div>
 
               <div>
                 <p class="login__signup">
-                  계정이 없으신가요? <a href="#">회원가입 하기</a>
+                  계정이 없으신가요? <a onclick="showSignup()">회원가입 하기</a>
                 </p>
 
                 <a href="#" class="id__forgot">
@@ -107,6 +120,35 @@
                   비밀번호 찾기
                 </a>
               </div>
+            </div>
+            <div class="signup__form hidden" id="signup-form">
+              <div class="signup__title">회원가입</div>
+              <div class="signup__group">
+                <div>
+                  <input type="text" class="signup__input" placeholder="이름" id="signup-name">
+                </div>
+
+                <div>
+                  <input type="email" class="signup__input" placeholder="이메일" id="signup-id">
+                </div>
+
+                <div>
+                  <input type="password" class="signup__input" placeholder="비밀번호" id="signup-password">
+                </div>
+                
+                <div>
+                  <input type="text" class="signup__input" placeholder="생년월일(YYYY/MM/DD)" id="signup-birthday">
+                </div>
+                
+                <div>
+                  <button class="signup__button" onclick="handleSignup()">회원가입</button>
+                </div>
+              </div>  
+
+              <div class="login__signup">
+                <a onclick="showLogin()">로그인 화면으로 돌아가기</a>
+              </div>
+
             </div>
           </div>
         </div>
