@@ -2,59 +2,83 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-/* =================== SHOW MENU ==================== */
-const navMenu = document.getElementById('nav-menu'),
-      navToggle = document.getElementById('nav-toggle'),
+
+/* =================== 메뉴 ==================== */
+const navMypage = document.getElementById('nav-mypage'),
+      navMenu = document.getElementById('nav-menu'),
       navClose = document.getElementById('nav-close')
        
-/* Menu show */
-navToggle.addEventListener('click', () => {
-  navMenu.classList.add('show-menu')
+/* 메뉴 보이기 */
+navMenu.addEventListener('click', () => {
+  navMypage.classList.add('show-menu')
 })
 
-/* Menu hidden */
+/* 메뉴 감추기 */
 navClose.addEventListener('click', () => {
-  navMenu.classList.remove('show-menu')
+  navMypage.classList.remove('show-menu')
 })
 
-/* =================== SEARCH ==================== */
+
+/* =================== 마이페이지 ==================== */
+function toggleDropdown() {
+  document.getElementById('mypage-list').classList.toggle('show');
+}
+
+/* 항목 감추기 */
+window.onclick = function(event) {
+  if (!event.target.matches('.mypage__btn')) {
+      var dropdowns = document.getElementsByClassName('mypage__list');
+      for (var i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+              openDropdown.classList.remove('show');
+          }
+      }
+  }
+}
+
+window.toggleDropdown = toggleDropdown;
+
+
+/* =================== 검색 ==================== */
 const search = document.getElementById('search'),
       searchBtn = document.getElementById('search-btn'),
       searchClose = document.getElementById('search-overlay')
 
-/* Search show */
+/* 검색 보이기 */
 searchBtn.addEventListener('click', () =>{
    search.classList.add('show-search')
 })
 
-/* Search hidden */
+/* 검색 감추기 */
 searchClose.addEventListener('click', function(event) {
   if (event.target === this) {
     window.location.href = 'index.html';;
   }
 })
 
-/* =================== LOGIN ==================== */
+
+/* =================== 로그인 ==================== */
 const login = document.getElementById('login'),
       loginBtn = document.getElementById('login-btn'),
       loginClose = document.getElementById('login-overlay')
 
-/* Login show */
+/* 로그인 보이기 */
 loginBtn.addEventListener('click', () => {
   login.classList.add('show-login')
 })
 
-/* Login hidden */
+/* 로그인 감추기 */
 loginClose.addEventListener('click', function(event) {
   if (event.target === this) {
     window.location.href = 'index.html'; // 홈 화면으로 이동하는 URL
   }
 })
 
-/* =================== LOGIN WITH KAKAO ==================== */
+
+/* =================== 카카오 로그인 ==================== */
 /* global Kakao */
 
 // 카카오 SDK 초기화
@@ -97,31 +121,35 @@ Kakao.init('YOUR_KAKAO_JAVASCRIPT_KEY'); // 카카오 앱의 JavaScript 키로 �
       });
     });
 
-/* =================== SIGNUP ==================== */
+
+/* =================== 회원가입 ==================== */
 function showSignup() {
   document.getElementById('login-form').classList.add('hidden');
-  document.getElementById('signup-form').classList.remove('hidden');
+  document.getElementById('signup').classList.remove('hidden');
 }
 
 function showLogin() {
   document.getElementById('login-form').classList.remove('hidden');
-  document.getElementById('signup-form').classList.add('hidden');
+  document.getElementById('signup').classList.add('hidden');
 }
 
 window.showSignup = showSignup;
 window.showLogin = showLogin;
+window.handleSignup = handleSignup;
+window.handleLogin = handleLogin;
+
 
 /* =================== 로그인 및 회원가입 연동 ==================== */
 async function handleLogin() {
-  const username = document.getElementById('login-id').value;
+  const email = document.getElementById('login-email').value;
   const password = document.getElementById('login-password').value;
 
-  const response = await fetch('http://localhost:8081/api/users/login', {
+  const response = await fetch('http://192.168.56.1:8081/api/member/login', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ username, password })
+      body: JSON.stringify({ memberEmail: email, memberPassword: password })
   });
 
   if (response.ok) {
@@ -136,16 +164,15 @@ async function handleLogin() {
 
 async function handleSignup() {
   const name = document.getElementById('signup-name').value;
-  const username = document.getElementById('signup-id').value;
+  const email = document.getElementById('signup-email').value;
   const password = document.getElementById('signup-password').value;
-  const birthdate = document.getElementById('signup-birthdate').value;
 
-  const response = await fetch('http://localhost:8081/api/users/signup', {
+  const response = await fetch('http://192.168.56.1:8081/api/member/signup', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ name, username, password, birthdate })
+      body: JSON.stringify({ memberName: name, memberEmail: email, memberPassword: password })
   });
 
   if (response.ok) {
@@ -157,3 +184,4 @@ async function handleSignup() {
       // 회원가입 실패 시 수행할 작업
   }
 }
+
