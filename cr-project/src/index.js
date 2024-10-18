@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import ReactDOM from 'react-dom/client';
+// import React, { useEffect, useState } from 'react';
+// import axios from 'axios';
+// import ReactDOM from 'react-dom/client';
+// import reportWebVitals from './reportWebVitals';
 import './index.css';
-import reportWebVitals from './reportWebVitals';
+
 
 
 /* =================== 메뉴 ==================== */
@@ -21,21 +22,29 @@ navClose.addEventListener('click', () => {
 })
 
 
-/* =================== 마이페이지 ==================== */
-function toggleDropdown() {
-  document.getElementById('mypage-list').classList.toggle('show');
+/* =================== 드롭다운 토글 ==================== */
+function toggleDropdown(dropdownId) {
+  document.getElementById(dropdownId).classList.toggle('show');
 }
 
 /* 항목 감추기 */
 window.onclick = function(event) {
-  if (!event.target.matches('.mypage__btn')) {
-      var dropdowns = document.getElementsByClassName('mypage__list');
-      for (var i = 0; i < dropdowns.length; i++) {
-          var openDropdown = dropdowns[i];
-          if (openDropdown.classList.contains('show')) {
-              openDropdown.classList.remove('show');
-          }
+  if (!event.target.matches('.mypage__btn') && !event.target.matches('.menu__btn')) {
+    // 모든 드롭다운을 확인 후 닫음
+    var dropdowns = document.getElementsByClassName('mypage__list');
+    for (var i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
       }
+    }
+    var menuDropdowns = document.getElementsByClassName('menu__list');
+    for (var j = 0; j < menuDropdowns.length; j++) {
+      var openMenuDropdown = menuDropdowns[j];
+      if (openMenuDropdown.classList.contains('show')) {
+        openMenuDropdown.classList.remove('show');
+      }
+    }
   }
 }
 
@@ -79,10 +88,12 @@ loginClose.addEventListener('click', function(event) {
 
 
 /* =================== 카카오 로그인 ==================== */
+
+
 /* global Kakao */
 
 // 카카오 SDK 초기화
-Kakao.init('YOUR_KAKAO_JAVASCRIPT_KEY'); // 카카오 앱의 JavaScript 키로 초기화
+Kakao.init('43b4b0d0b84ebc052b5575bb698a13df'); // 카카오 앱의 JavaScript 키로 초기화
 
     document.getElementById('kakao-login-btn').addEventListener('click', function() {
       Kakao.Auth.login({
