@@ -5,374 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>카드맵 | 카드 추천</title>
     
-    <!--================== REMIXICONS ===================-->
+    <!--================== CSS===================-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+    <link rel="stylesheet" href="card_recommend.css">
+    <link rel="stylesheet" href="base.css">
 
-    <!--================== 인라인 CSS ===================-->
-    <style>
-/*=================== CSS 설정 ====================*/
-:root {
-    /*============ 색상 =============*/
-    /*Color mode HSL(hue, saturation, lightness)*/
-    --title-color: hsl(230, 75%, 15%);
-    --text-color: hsl(225, 3%, 24%);
-    --body-color: hsl(0, 0%, 98%);
-    --container-color: hsl(230, 100%, 97%);
-    --border-color: hsl(230, 25%, 80%);
-
-    /*============ 폰트 =============*/
-    --body-font: "Noto Sans KR", sans-serif;
-}
-
-/*=================== 베이스 ====================*/
-* {
-  box-sizing: border-box;
-  padding: 10;
-  margin: 10;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body,
-input,
-button {
-    font-family: var(--body-font);
-    font-size: 16px;
-}
-
-body {
-    background-color: var(--body-color);
-    color: var(--text-color);
-}
-
-input,
-button {
-    border: none;
-    outline: none;
-}
-
-ul {
-    list-style: none;
-}
-
-a {
-    text-decoration: none;
-}
-
-img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
-
-/*=================== 헤더 & 네비게이션바 ====================*/
-.header {
-  width: 100%;
-  height: 100%;
-  background-color: var(--body-color);
-  box-shadow: 0 2px 16px hsla(230, 75%, 32%, .15);
-  padding-top: 16px;
-  padding-bottom: 16px;
-  padding-left: 80px;
-  padding-right: 48px;
-  border-bottom: 1px #DDE1E6 solid;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 59px;
-  display: inline-flex;
-}
-
-.nav {
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 4px;
-  display: flex;
-}
-
-.nav__logo {
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
-  display: inline-flex;
-}
-
-.nav__logo a {
-  color: black;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 22.40px;
-  word-wrap: break-word;
-}
-
-.nav__actions {
-  width: 50%;
-  height: 48px;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  background: white;
-  border-radius: 9999px;
-  border: 2.5px black solid;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 8px;
-  display: flex;
-  margin-left: 10%;
-  margin-right: 15%;
-}
-
-.nav__search {
-  flex: 1 1 0;
-  color: #697077;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 22.40px;
-  word-wrap: break-word;
-  padding-right: 50%;
-}
-
-.nav__menu {
-  color: black;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 22.40px;
-  word-wrap: break-word;
-  cursor: pointer;
-  margin-left: 48px;
-}
-
-:is(.nav__search, .nav__mypage, .nav__menu, .mypage__btn):hover {
-  color: #697077;
-}
-
-/* 메뉴 보이기 */
-.show-menu {
-  top: 0;
-}
-
-/*=================== 마이페이지 ====================*/
-.mypage {
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
-  display: inline-block;
-  position: relative;
-}
-
-.mypage__btn {
-  color: black;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 22.40px;
-  word-wrap: break-word;
-  cursor: pointer;
-  background-color: transparent;
-  padding: 16px;
-  border: none;
-}
-
-.mypage__list {
-  display: none;
-  background: #f2f4f8;
-  box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
-  border-radius: 2px;
-  position: absolute;
-  min-width: 160px;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 8px;
-}
-
-.mypage__list a {
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  color: black;
-  font-size: 16px;
-  font-weight: 500;
-  word-wrap: break-word;
-  padding: 12px 16px;
-  display: block;
-}
-
-.mypage__list a:hover {
-  color: #6499fd;
-  font-weight: 600;
-  background: rgba(181.72, 207.17, 255, 0.50);
-  border-radius: 8px;
-
-}
-
-.show {
-  display: block;
-}
-
-        .title {
-            margin: 5% 0 0 5%;
-        }
-
-        .container {
-            margin: 3% 0 0 10%;
-        }
-
-        .container span {
-            width: 80%;
-            display: grid;
-            border: 1.5px black solid;
-            margin-bottom: 15px;
-        }
-
-        .heading {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            margin-left: 5px;
-        }
-
-        .subheading {
-            max-width: 85%;
-            display: flex;
-        }
-
-        .subheading p {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            margin-left: 5px;
-        }
-
-        .subheading span {
-            background-color: black;
-            margin-top: 30px;
-            margin-left: 40px;
-            height: 0.5px;
-        }
-
-        .button-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .button-group button {
-            padding: 8px 14px 6px 14px;
-            border: 2.5px solid black;
-            border-radius: 20px;
-            background-color: white;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        .button-group button:focus {
-            color: white;
-            background-color: black;
-        }
-
-        .card {
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 80%;
-            display: flex;
-            align-items: center;
-            margin-bottom: 32px;
-        }
-
-        .card img {
-            max-width: fit-content;
-            max-height: fit-content;
-            margin-bottom: 10px;
-        }
-
-        .card-details {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            margin-left: 5%;
-        }
-
-        .card-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            margin-left: 5%;
-            white-space: nowrap;
-        }
-
-        .card-description {
-            font-size: 20px;
-            color: #888;
-            margin-left: 5%;
-            white-space: nowrap;
-        }
-
-        .more-cards {
-            display: flex;
-            justify-content: initial;
-            align-items: center;
-            margin-top: 30px;
-            max-height: 30%;
-        }
-
-        .more-cards .card {
-            width: 40%;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            height: 256px;
-            border-radius: 10px;
-            padding: 10px;
-        }
-
-        .more-cards .card img {
-            max-width: 20%;
-            max-height: 90%;
-            margin-bottom: 10px;
-            margin-left: 10px;
-        }
-    </style>
+    <!--================== JavaScript ===================-->
+    <script src="base.js"></script>
 </head>
 <body>
     <!--================== 헤더 ===================-->
     <header class="header" id="header">
         <nav>
+          <a href="index.html">
             <div class="nav__logo">
-                <a href="index.html">카드맵</a>
-            </div>
+            <img src="favicon.ico" alt="logo-img">
+            <p>카드맵</p></div>
+          </a>
         </nav>
-
+  
         <div class="nav__actions" id="search-btn">
-            <div>
-                <i class="ri-search-line"></i>
-            </div>
-            <div class="nav__search">
-                <input type="search" placeholder="카드, 혜택, 메뉴 검색">
-            </div>
-            <div>
-                <i class="ri-arrow-down-s-line"></i>
-            </div>
+          <div>
+            <i class="ri-search-line"></i>
+          </div>
+          <div class="nav__search">검색어를 입력하세요.</div>
+          <div>
+            <i class="ri-arrow-down-s-line"></i>
+          </div>
         </div>
-
+  
         <div class="nav__mypage" id="nav-mypage">
-            <div class="mypage">
-                <button class="mypage__btn" onclick="toggleDropdown()">마이페이지</button>
-                <div class="mypage__list" id="mypage-list">
-                    <a href="#" class="mypage__login" id="login-btn">로그인</a>
-                    <a href="profile.html">프로필</a>
-                    <a href="report.html">분석 리포트</a>
-                    <a href="asset_link.html">자산 연동</a>
-                </div>
+          <div class="mypage">
+            <button class="mypage__btn" onclick="toggleDropdown('mypage-list')">마이페이지</button>
+            <div class="mypage__list" id="mypage-list">
+              <a href="#" class="mypage__login" id="login-btn">로그인</a>
+              <a href="profile.html">프로필</a>
             </div>
+          </div>
         </div>
-        <div class="nav__menu" id="nav-menu">메뉴</div>
+        <div class="nav__menu" id="nav-menu">
+          <div class="menu">
+            <button class="menu__btn" onclick="toggleDropdown('menu-list')">메뉴</button>
+            <div class="menu__list" id="menu-list">
+              <a href="report.html">분석 리포트</a>
+              <a href="card_recommend.html">카드 추천</a>
+            </div>
+          </div>
+        </div>
         
         <div class="nav__close" id="nav-close"></div>
-    </header>
+      </header>
 
     <!--================== 카드 추천 ===================-->
     <main>
@@ -385,11 +67,11 @@ img {
             <span></span>
             <div class="button-group">
                 <button>쇼핑 혜택 BEST</button>
-                <button>음식 · 배달 혜택 BEST</button>
-                <button>교통 혜택 BEST</button>
-                <button>통신 혜택 BEST</button>
-                <button>카페 혜택 BEST</button>
-                <button>구독 혜택 BEST</button>
+                <button>배달앱+간편결제 혜택 BEST</button>
+                <button>점심+교통 혜택 BEST</button>
+                <button>통신+공과금 혜택 BEST</button>
+                <button>편의점+카페 혜택 BEST</button>
+                <button>구독/스트리밍 혜택 BEST</button>
             </div>
             <div class="card-container">
                 <div class="card">
@@ -416,27 +98,5 @@ img {
             </div>
         </div>
     </main>
-
-    <!--================== JavaScript ===================-->
-    <script>
-        function toggleDropdown() {
-        document.getElementById('mypage-list').classList.toggle('show');
-        }
-
-        /* 항목 감추기 */
-        window.onclick = function(event) {
-        if (!event.target.matches('.mypage__btn')) {
-            var dropdowns = document.getElementsByClassName('mypage__list');
-            for (var i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
-        }
-
-        window.toggleDropdown = toggleDropdown;
-    </script>
 </body>
 </html>

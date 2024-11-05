@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>카드맵 | 홈</title>
   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+  <script src="src/index.js"></script>
+  <script src="chart.js"></script>
   
   <!--================== REMIXICONS ===================-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
@@ -14,9 +16,11 @@
     <!--================== 헤더 ===================-->
     <header class="header" id="header">
       <nav>
-        <div class="nav__logo">
-          <a href="index.html">카드맵</a>
-        </div>
+        <a href="index.html">
+          <div class="nav__logo">
+          <img src="favicon.ico" alt="logo-img">
+          <p>카드맵</p></div>
+        </a>
       </nav>
 
       <div class="nav__actions" id="search-btn">
@@ -56,75 +60,52 @@
       <h1>카드 순위</h1>
     </div>
     <div class="dropdown-container">
-        <label for="card-category">카드종합순위</label>
+        <label class="dropdown-title">카드 종합 순위</label>
         <div class="dropdown">
-            1<p>신한카드 Mr.Life</p>
-            <i class="ri-arrow-down-s-line"></i>
+          <button class="dropdown-button">
+            <label>1<p>신한카드 Mr.Life</p>
+            <i class="ri-arrow-down-s-line"></i></label>
+          </button>
+          <ul class="dropdown-menu">
+              <li><span>1</span><p>신한카드 Mr.Life</p></li>
+              <li><span>2</span><p>삼성카드 스카이패스</p></li>
+              <li><span>3</span><p>KB국민 My WE:SH 카드</p></li>
+              <li><span>4</span><p>카드의정석 Every Mile Skypass</p></li>
+              <li><span>5</span><p>삼성카드 taptap O</p></li>
+              <li><span>6</span><p>현대카드 M</p></li>
+              <li><span>7</span><p>LOCA LIKIT 1.2</p></li>
+              <li><span>8</span><p>현대카드 ZERO Edition3</p></li>
+              <li><span>9</span><p>JADE Classic</p></li>
+              <li><span>10</span><p>올바른 FLEX 카드</p></li>
+          </ul>
         </div>
     </div>
 
     <div class="container">
-        <div class="section">
-            <h2>연령대별</h2>
-            <span></span>
-            <div class="section-list">
-              <i class="ri-arrow-left-s-line"></i>
-              <label>10대-20대</label>
-              <i class="ri-arrow-right-s-line"></i>
-            </div>
-            <div class="card-list">
-              <li>
-                <div class="rank">1</div>
-                <img src="card_data/etc/payco_point.png" alt="PAYCO 포인트 카드">
-                <div class="card-name">PAYCO 포인트 카드<br>엔에이치엔페이코</div>
-              </li>
-              <li>
-                <div class="rank">2</div>
-                <img src="card_data/kb/nori2.png" alt="노리2 체크카드">
-                <div class="card-name">노리2 체크카드<br>KB국민카드</div>
-              </li>
-              <li>
-                <div class="rank">3</div>
-                <img src="card_data/shinhan/deepdream.png" alt="신한카드 Deep Dream 체크">
-                <div class="card-name">신한카드 Deep Dream 체크<br>신한카드</div>
-              </li>
-              <li>
-                <div class="rank">4</div>
-                <img src="card_data/hana/naverpay.png" alt="네이버페이 머니 체크카드">
-                <div class="card-name">네이버페이 머니 체크카드<br>하나카드</div>
-              </li>
-              <li>
-                <div class="rank">5</div>
-                <img src="card_data/kb/travelus.png" alt="트래블러스 체크카드">
-                <div class="card-name">트래블러스 체크카드<br>KB국민카드</div>
-              </li>
-              <li>
-                <div class="rank">6</div>
-                <img src="card_data/kb/nori.png" alt="노리체크카드">
-                <div class="card-name">노리체크카드<br>KB국민카드</div>
-              </li>
-              <li>
-                <div class="rank">7</div>
-                <img src="card_data/kb/tosimi_check.png" alt="토심이 첵첵 체크카드">
-                <div class="card-name">토심이 첵첵 체크카드<br>KB국민카드</div>
-              </li>
-              <li>
-                <div class="rank">8</div>
-                <img src="card_data/etc/k_one.png" alt="ONE 체크카드">
-                <div class="card-name">ONE 체크카드<br>케이뱅크</div>
-              </li>
-              <li>
-                <div class="rank">9</div>
-                <img src="card_data/etc/naverpay.png" alt="네이버페이 머니카드">
-                <div class="card-name">네이버페이 머니카드<br>네이버페이</div>
-              </li>
-              <li>
-                <div class="rank">10</div>
-                <img src="card_data/shinhan/sol_travel.png" alt="신한카드 SOL트래블 체크">
-                <div class="card-name">신한카드 SOL트래블 체크<br>신한카드</div>
-              </li>
-            </div>
+      <div class="section">
+        <h2>연령대별</h2>
+        <span></span>
+        <div class="section-list">
+          <button class="prev-age">
+            <i class="ri-arrow-left-s-line"></i></button>
+          <button class="age-button">10-20대</button>
+          <button class="next-age">
+            <i class="ri-arrow-right-s-line"></i></button>
         </div>
+
+        <ul class="age-dropdown-menu">
+          <li data-age="10-20">10-20대</li>
+          <li data-age="20-30">20-30대</li>
+          <li data-age="30-40">30-40대</li>
+          <li data-age="40-50">40-50대</li>
+        </ul>
+
+        <div class="ranking-container" id="age-rankings">
+        </div>
+      </div>
+
+    
+
         <div class="section">
             <h2>혜택별</h2>
             <span></span>
@@ -133,6 +114,7 @@
               <label>쇼핑</label>
               <i class="ri-arrow-right-s-line"></i>
             </div>
+
             <div class="card-list">
               <li>
                 <div class="rank">1</div>
@@ -158,31 +140,6 @@
                 <div class="rank">5</div>
                 <img src="card_data/etc/hyundai_m.png" alt="현대카드 M">
                 <div class="card-name">현대카드 M<br>현대카드</div>
-              </li>
-              <li>
-                <div class="rank">6</div>
-                <img src="card_data/shinhan/first.png" alt="신한카드 처음">
-                <div class="card-name">신한카드 처음<br>신한카드</div>
-              </li>
-              <li>
-                <div class="rank">7</div>
-                <img src="card_data/samsung/id_simple.png" alt="삼성 iD SIMPLE 카드">
-                <div class="card-name">삼성 iD SIMPLE 카드<br>삼성카드</div>
-              </li>
-              <li>
-                <div class="rank">8</div>
-                <img src="card_data/etc/nh_flex.png" alt="올바른 FLEX 카드">
-                <div class="card-name">올바른 FLEX 카드<br>NH농협카드</div>
-              </li>
-              <li>
-                <div class="rank">9</div>
-                <img src="card_data/etc/woori_da.png" alt="DA 카드의 정석 2">
-                <div class="card-name">DA 카드의 정석 2<br>우리카드</div>
-              </li>
-              <li>
-                <div class="rank">10</div>
-                <img src="card_data/hana/jade.png" alt="JADE Classic">
-                <div class="card-name">JADE Classic<br>하나카드</div>
               </li>
             </div>
         </div>
@@ -219,31 +176,6 @@
                 <div class="rank">5</div>
                 <img src="card_data/shinhan/deepdream.png" alt="신한카드 Deep Dream">
                 <div class="card-name">신한카드 Deep Dream<br>신한카드</div>
-              </li>
-              <li>
-                <div class="rank">6</div>
-                <img src="card_data/shinhan/asiana.png" alt="아시아나 신한카드 Air 1.5">
-                <div class="card-name">아시아나 신한카드 Air 1.5<br>신한카드</div>
-              </li>
-              <li>
-                <div class="rank">7</div>
-                <img src="card_data/shinhan/kpass.png" alt="K-패스 신한카드">
-                <div class="card-name">K-패스 신한카드<br>신한카드</div>
-              </li>
-              <li>
-                <div class="rank">8</div>
-                <img src="card_data/shinhan/rpm.png" alt="신한카드 RPM+ Platinum#">
-                <div class="card-name">신한카드 RPM+ Platinum#<br>신한카드</div>
-              </li>
-              <li>
-                <div class="rank">9</div>
-                <img src="card_data/shinhan/pointplan.png" alt="신한카드 Point Plan">
-                <div class="card-name">신한카드 Point Plan<br>신한카드</div>
-              </li>
-              <li>
-                <div class="rank">10</div>
-                <img src="card_data/shinhan/deepdream+.png" alt="신한카드 Deep Dream Platinum+">
-                <div class="card-name">신한카드 Deep Dream Platinum+<br>신한카드</div>
               </li>
             </div>
         </div>
@@ -307,8 +239,6 @@
           </p>
       </div>
     </div>
-      
-    
 
     <!--================== 회원가입 ===================-->   
       <div class="signup hidden" id="signup">
@@ -348,7 +278,6 @@
             </label>
           </div>
           <button type="button" class="signup__button" onclick="handleSignup()">회원가입</button>
-        
 
           <div class="social__login">
             <div class="divider">
@@ -363,11 +292,7 @@
           <p class="login__link">
             <a onclick="showLogin()">로그인 페이지로 돌아가기</a>
           </p> 
-
         </form>
-      </div>
-      
-
-    <script src="src/index.js"></script>
+      </div> 
 </body>
 </html>

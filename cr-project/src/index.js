@@ -196,3 +196,198 @@ async function handleSignup() {
   }
 }
 
+
+/* =================== 카드 종합 순위 ==================== */
+document.querySelector('.dropdown-button').addEventListener('click', function() {
+  const menu = document.querySelector('.dropdown-menu');
+  menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+});
+
+window.addEventListener('click', function(event) {
+  const dropdown = document.querySelector('.dropdown');
+  if (!dropdown.contains(event.target)) {
+    document.querySelector('.dropdown-menu').style.display = 'none';
+  }
+});
+
+
+/* =================== 카드 순위 ==================== */
+
+// 연령대별
+document.querySelector('.age-button').addEventListener('click', function() {
+  const menu = document.querySelector('.age-dropdown-menu');
+  menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+});
+
+document.querySelectorAll('.age-dropdown-menu li').forEach(item => {
+  item.addEventListener('click', function() {
+      const selectedAge = item.getAttribute('data-age');
+      document.querySelector('.age-button').innerText = `${selectedAge}대`;
+      document.querySelector('.age-dropdown-menu').style.display = 'none';
+      updateRankings(selectedAge);
+  });
+});
+
+// Optional: To close the dropdown if the user clicks outside of it
+window.addEventListener('click', function(event) {
+  const dropdown = document.querySelector('.section');
+  if (!dropdown.contains(event.target)) {
+      document.querySelector('.age-dropdown-menu').style.display = 'none';
+  }
+});
+
+
+const ageRanges = ['10-20', '20-30', '30-40', '40-50'];
+let currentIndex = 0; // 초기 인덱스를 0으로 설정 (10-20대)
+
+// 페이지가 로드될 때 초기 순위를 설정합니다.
+window.addEventListener('DOMContentLoaded', function() {
+    const selectedAge = ageRanges[currentIndex];
+    document.querySelector('.age-button').innerText = `${selectedAge}대`;
+    updateRankings(selectedAge); // 초기 순위 업데이트 함수 호출
+});
+
+// 왼쪽 화살표 버튼 이벤트
+document.querySelector('.prev-age').addEventListener('click', function() {
+    currentIndex = (currentIndex === 0) ? ageRanges.length - 1 : currentIndex - 1;
+    const selectedAge = ageRanges[currentIndex];
+    document.querySelector('.age-button').innerText = `${selectedAge}대`;
+    updateRankings(selectedAge);
+});
+
+// 오른쪽 화살표 버튼 이벤트
+document.querySelector('.next-age').addEventListener('click', function() {
+    currentIndex = (currentIndex === ageRanges.length - 1) ? 0 : currentIndex + 1;
+    const selectedAge = ageRanges[currentIndex];
+    document.querySelector('.age-button').innerText = `${selectedAge}대`;
+    updateRankings(selectedAge);
+});
+
+// 순위 업데이트 함수
+function updateRankings(ageRange) {
+  const rankingContainer = document.getElementById('age-rankings');
+  let rankingsHtml = '';
+
+  if (ageRange === '10-20') {
+      rankingsHtml = `
+          <div class="card-list">
+              <li>
+                <div class="rank">1</div>
+                <img src="card_data/etc/payco_point.png" alt="PAYCO 포인트 카드">
+                <div class="card-name">PAYCO 포인트 카드<br>엔에이치엔페이코</div>
+              </li>
+              <li>
+                <div class="rank">2</div>
+                <img src="card_data/kb/nori2.png" alt="노리2 체크카드">
+                <div class="card-name">노리2 체크카드<br>KB국민카드</div>
+              </li>
+              <li>
+                <div class="rank">3</div>
+                <img src="card_data/shinhan/deepdream.png" alt="신한카드 Deep Dream 체크">
+                <div class="card-name">신한카드 Deep Dream 체크<br>신한카드</div>
+              </li>
+              <li>
+                <div class="rank">4</div>
+                <img src="card_data/hana/naverpay.png" alt="네이버페이 머니 체크카드">
+                <div class="card-name">네이버페이 머니 체크카드<br>하나카드</div>
+              </li>
+              <li>
+                <div class="rank">5</div>
+                <img src="card_data/kb/travelus.png" alt="트래블러스 체크카드">
+                <div class="card-name">트래블러스 체크카드<br>KB국민카드</div>
+              </li>
+          </div>`;
+  } else if (ageRange === '20-30') {
+      rankingsHtml = `
+          <div class="card-list">
+              <li>
+                <div class="rank">1</div>
+                <img src="card_data/kb/nori.png" alt="노리체크카드">
+                <div class="card-name">노리체크카드<br>KB국민카드</div>
+              </li>
+              <li>
+                <div class="rank">2</div>
+                <img src="card_data/kb/tosimi_check.png" alt="토심이 첵첵 체크카드">
+                <div class="card-name">토심이 첵첵 체크카드<br>KB국민카드</div>
+              </li>
+              <li>
+                <div class="rank">3</div>
+                <img src="card_data/etc/k_one.png" alt="ONE 체크카드">
+                <div class="card-name">ONE 체크카드<br>케이뱅크</div>
+              </li>
+              <li>
+                <div class="rank">4</div>
+                <img src="card_data/etc/naverpay.png" alt="네이버페이 머니카드">
+                <div class="card-name">네이버페이 머니카드<br>네이버페이</div>
+              </li>
+              <li>
+                <div class="rank">5</div>
+                <img src="card_data/shinhan/sol_travel.png" alt="신한카드 SOL트래블 체크">
+                <div class="card-name">신한카드 SOL트래블 체크<br>신한카드</div>
+              </li>
+          </div>`;
+  } else if (ageRange === '30-40') {
+    rankingsHtml = `
+        <div class="card-list">
+            <li>
+                <div class="rank">1</div>
+                <img src="card_data/etc/payco_point.png" alt="PAYCO 포인트 카드">
+                <div class="card-name">PAYCO 포인트 카드<br>엔에이치엔페이코</div>
+              </li>
+              <li>
+                <div class="rank">2</div>
+                <img src="card_data/kb/nori2.png" alt="노리2 체크카드">
+                <div class="card-name">노리2 체크카드<br>KB국민카드</div>
+              </li>
+              <li>
+                <div class="rank">3</div>
+                <img src="card_data/shinhan/deepdream.png" alt="신한카드 Deep Dream 체크">
+                <div class="card-name">신한카드 Deep Dream 체크<br>신한카드</div>
+              </li>
+              <li>
+                <div class="rank">4</div>
+                <img src="card_data/hana/naverpay.png" alt="네이버페이 머니 체크카드">
+                <div class="card-name">네이버페이 머니 체크카드<br>하나카드</div>
+              </li>
+              <li>
+                <div class="rank">5</div>
+                <img src="card_data/kb/travelus.png" alt="트래블러스 체크카드">
+                <div class="card-name">트래블러스 체크카드<br>KB국민카드</div>
+              </li>
+        </div>`;
+  } else if (ageRange === '40-50') {
+    rankingsHtml = `
+        <div class="card-list">
+            <li>
+              <div class="rank">1</div>
+              <img src="card_data/kb/nori.png" alt="노리체크카드">
+              <div class="card-name">노리체크카드<br>KB국민카드</div>
+            </li>
+            <li>
+              <div class="rank">2</div>
+              <img src="card_data/kb/tosimi_check.png" alt="토심이 첵첵 체크카드">
+              <div class="card-name">토심이 첵첵 체크카드<br>KB국민카드</div>
+            </li>
+            <li>
+              <div class="rank">3</div>
+              <img src="card_data/etc/k_one.png" alt="ONE 체크카드">
+              <div class="card-name">ONE 체크카드<br>케이뱅크</div>
+            </li>
+            <li>
+              <div class="rank">4</div>
+              <img src="card_data/etc/naverpay.png" alt="네이버페이 머니카드">
+              <div class="card-name">네이버페이 머니카드<br>네이버페이</div>
+            </li>
+            <li>
+              <div class="rank">5</div>
+              <img src="card_data/shinhan/sol_travel.png" alt="신한카드 SOL트래블 체크">
+              <div class="card-name">신한카드 SOL트래블 체크<br>신한카드</div>
+            </li>
+        </div>`;
+  }
+
+  rankingContainer.innerHTML = rankingsHtml;
+}
+
+
+

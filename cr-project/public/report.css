@@ -1,0 +1,122 @@
+/*=================== 분석 리포트 ====================*/
+.title {
+    margin: 5% 0 0 5%;
+}
+
+.report-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10% 0 20%;
+}
+
+.report-header span {
+    display: grid;
+    width: 500px;
+    border: 2px black solid;
+    transform: translateY(-5px);
+    margin-bottom: 10px;
+}
+
+.report-header select {
+    width: auto;
+    padding: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    border: 2.5px black solid;
+    border-radius: 16px;
+    margin-right: 10px;
+    margin-bottom: 10%;
+}
+
+.report-month {
+    display: grid;
+    font-size: 18px;
+    font-weight: 600;
+    transform: translateY(-80%);
+}
+
+.total-amount {
+    text-align: center;
+    width: 175px;
+    height: 56px;
+    color: white;
+    background-color: black;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    padding-top: 10px;
+    border-radius: 9999px;
+    transform: translateX(-38%);
+}
+
+.chart img {
+    max-width: 100%;
+    height: auto;
+    transform: translateX(-20px);
+}
+
+.analysis {
+    font-size: 18px;
+    margin-top: 5%;
+}
+
+.details {
+    display: grid;
+    align-items: center;
+    margin-left: 10%;
+}
+
+.details p {
+    display: flex;
+    margin: 5px 0;
+    font-size: 20px;
+}
+
+.details p span {
+    font-weight: bold;
+    margin-left: 15px;
+    border: none;
+}
+
+.rate {
+    margin-left: 30px;
+    margin-bottom: 14px;
+    font-size: 18px;
+    color: lightslategray;
+}
+
+.arrow {
+    display: block;
+    text-align: center;
+    font-size: 48px;
+}
+
+.cta {
+    text-align: center;
+    margin: 25% 0;
+    font-size: x-large;
+    font-weight: 600;
+}
+
+.cta p {
+    line-height: 10px;
+}
+
+.cta span {
+    color: rgb(0, 81, 255);
+}
+
+.footer {
+    display: inline-block;
+    width: 120px;
+    height: 32px;
+    font-size: 18px;
+    border: 2.5px black solid;
+    border-radius: 24px;
+}
+
+.footer a, .footer span {
+    color: black;
+}

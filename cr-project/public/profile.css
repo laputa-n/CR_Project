@@ -1,0 +1,93 @@
+/*=================== 프로필 ====================*/
+.title {
+  margin: 5% 0 0 5%;  
+}
+
+.profile__container {
+  background-color: #fff;
+  padding: 3% 5% 3% 5%;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+.profile__header {
+  display: flex;
+  align-items: center;
+  margin: 5px 20px 50px 10px;
+  font-size: 30px;
+}
+
+.profile__icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.profile__title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 3%;
+}
+
+.profile__form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.profile__group {
+  flex: 1 1 45%;
+  margin-bottom: 20px;
+}
+
+.profile__group:last-child {
+  margin-right: 0;
+}
+
+.profile__group label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.profile__group input {
+  width: calc(100% - 22px);
+  padding: 10px;
+  padding-left: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background-color: #f2f4f8;
+}
+
+.profile__button {
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 22px);
+}
+
+.delete__account {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.save__profile {
+  background-color: #000;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#gender {
+  width: 8%;
+}

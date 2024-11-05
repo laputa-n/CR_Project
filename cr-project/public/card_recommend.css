@@ -1,0 +1,109 @@
+/*=================== 카드 추천 ====================*/
+.title {
+    margin: 5% 0 0 5%;
+}
+
+.container {
+    margin-top: 3%;
+    margin-left: 100px;
+}
+
+.container span {
+    width: 90%;
+    display: grid;
+    border: 1.5px black solid;
+    margin-bottom: 15px;
+}
+
+.heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+
+.subheading {
+    max-width: 90%;
+    display: flex;
+}
+
+.subheading p {
+    width: 300px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.subheading span {
+    background-color: black;
+    margin-top: 34px;
+    height: 0.5px;
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.button-group button {
+    padding: 8px 14px 6px 14px;
+    border: 2.5px solid black;
+    border-radius: 20px;
+    background-color: white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.button-group button:hover {
+    color: white;
+    background-color: black;
+}
+
+.card {
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 80%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.card-details {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+}
+
+.card-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-left: 5%;
+    white-space: nowrap;
+}
+
+.card-description {
+    font-size: 20px;
+    color: #888;
+    margin-left: 5%;
+    white-space: nowrap;
+}
+
+.more-cards {
+    display: flex;
+}
+
+.more-cards .card {
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.more-cards .card img {
+    max-width: 30%;
+    max-height: 90%;
+    margin-left: 10px;
+}

@@ -29,39 +29,38 @@ html {
 body,
 input,
 button {
-    font-family: var(--body-font);
-    font-size: 16px;
+  font-family: var(--body-font);
+  font-size: 16px;
 }
 
 body {
-    background-color: var(--body-color);
-    color: var(--text-color);
+  background-color: var(--body-color);
+  color: var(--text-color);
 }
 
 input,
 button {
-    border: none;
-    outline: none;
+  border: none;
+  outline: none;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 img {
-    display: block;
-    max-width: 100%;
-    height: auto;
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 /*=================== 재사용 CSS 클래스 ====================*/
 .container {
-    max-width: 1120px;
-    margin-inline: 1.5rem;
+  width: 50%;
 }
 
 .search,
@@ -102,9 +101,7 @@ img {
   height: 100%;
   background-color: var(--body-color);
   box-shadow: 0 2px 16px hsla(230, 75%, 32%, .15);
-  padding-top: 16px;
-  padding-bottom: 16px;
-  padding-left: 80px;
+  padding: 16px 0 16px 50px;
   border-bottom: 1px #DDE1E6 solid;
   align-items: center;
   gap: 20px;
@@ -112,14 +109,22 @@ img {
 }
 
 .nav__logo {
-  width: 120px;
+  width: 150px;
+  align-items: center;
 }
 
-.nav__logo a {
+.nav__logo img {
+  position: absolute;
+  width: 40px;
+  margin-top: 1px;
+}
+
+.nav__logo p {
+  display: inline;
   color: black;
   font-size: 28px;
   font-weight: 600;
-  line-height: 22.40px;
+  margin-left: 55px;
 }
 
 .nav__actions {
@@ -203,7 +208,6 @@ img {
   font-weight: 600;
   background: rgba(181.72, 207.17, 255, 0.50);
   border-radius: 8px;
-
 }
 
 .show {
@@ -219,7 +223,7 @@ img {
   display: flex;
   justify-content: center;
   padding: 20px;
-  margin-left: 24%;
+  margin-left: 26%;
 }
 
 .section {
@@ -244,12 +248,52 @@ img {
   display: flex;
   width: 100%;
   justify-content: center;
-  padding-top: 10px;
+  padding-bottom: 20px;
   margin-bottom: 5%;
 }
 
+.section-list button {
+  background-color: var(--body-color);
+  cursor: pointer;
+}
+
+
+.prev-age i, .next-age i {
+  margin-top: 5px;
+  font-size: large;
+}
+
+.age-dropdown-menu {
+  width: 120px;
+  font-weight: 500;
+  display: none;
+  position: absolute;
+  text-align: center;
+  background: #f2f4f8;
+  border: 2px solid #DDE1E6;
+  box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+  border-radius: 8px;
+  padding: 0;
+  margin-top: -25px;
+  margin-left: 130px;
+  z-index: 1000;
+}
+
+.age-dropdown-menu li {
+  padding: 15px 15px 10px;
+  cursor: pointer;
+}
+
+.age-dropdown-menu li:hover {
+  color: #6499fd;
+  font-size: large;
+  background: rgba(181.72, 207.17, 255, 0.50);
+  border-radius: 4px;
+}
+
+
+
 .section-list label {
-  margin-bottom: 20px;
   padding-left: 10px;
   padding-right: 10px;
 }
@@ -261,7 +305,7 @@ img {
 
 .card-list {
   padding: 10px;
-  border: 1.5px solid #DDE1E6;
+  border: 2px solid #DDE1E6;
   border-radius: 16px;
 }
 
@@ -303,56 +347,101 @@ img {
 
 .card-name {
   position: relative;
-  margin-left: 45%;
+  margin-left: 40%;
   font-size: 16px;
   color: #333;
 }
 
-.card-list:last-child {
-  border-bottom: none;
-}
-
+/*=================== 카드 종합 순위 ====================*/
 .dropdown-container {
   width: fit-content;
   position: relative;
   margin-left: 80%;
   text-align: left;
-  transform: translateY(-50%);
+  top: -50px;
 }
 
-.dropdown-container label {
+.dropdown-title  {
   margin-left: 10px;
   font-size: 18px;
   font-weight: 700;
 }
 
 .dropdown {
-  height: 48px;
-  display: flex;
-  align-items: center;
-  font-size: 16px;
-  font-weight: bolder;
-  border: 2px solid black;
-  border-radius: 9999px;
-  margin-top: 10px;
-  display: flex;
-  padding: 10px;
-  padding-left: 20px;
+  position: relative;
+  margin-top: 15px;
 }
 
-.dropdown p {
-  padding: 20px;
-  padding-right: 30px;
-  font-weight: 400;
+.dropdown label p {
+  display: inline;
+  margin-left: 10px;
+}
+
+.dropdown-button {
+  display: flex;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 24px;
+  padding: 10px 20px;
+}
+
+.dropdown-button label {
+  cursor: pointer;
 }
 
 .dropdown i{
   position: relative;
   font-size: 24px;
   color: black;
-  margin-right: 10px;
+  margin-left: 25px;
 }
 
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background: #f2f4f8;
+  border: 2px solid #DDE1E6;
+  box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+  border-radius: 18px;
+  list-style: none;
+  width: fit-content;
+  z-index: 1000;
+  margin-top: -55px;
+}
+
+.dropdown-menu li {
+  margin-left: -40px;
+  height: 68px;
+  padding: 8px;
+  font-weight: 500;
+}
+
+.dropdown-menu span {
+  width: 30px;
+  text-align: center;
+  display: inline-block;
+  position: absolute;
+  margin: 12px 0 0 5px;
+  font-size: 20px;
+  cursor: default;
+}
+
+.dropdown-menu p {
+  display: inline-block;
+  height: 68px;
+  margin-left: 50px;
+  margin-right: 10px;
+  cursor: default;
+  transform: translateY(-23px);
+  align-content: center;
+}
+
+.dropdown-menu li:hover {
+  color: #6499fd;
+  font-size: large;
+  background: rgba(181.72, 207.17, 255, 0.50);
+  border-radius: 8px;
+}
 
 /*=================== 오버레이 ====================*/
 .overlay {
