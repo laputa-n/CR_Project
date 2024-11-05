@@ -3,6 +3,10 @@
     margin: 5% 0 0 5%;
 }
 
+h1 a {
+    color: black;
+}
+
 .container {
     margin-top: 3%;
     margin-left: 100px;
@@ -57,18 +61,21 @@
     font-weight: bold;
 }
 
-.button-group button:hover {
-    color: white;
+.button-group .filter-button.active {
     background-color: black;
+    color: white;
 }
 
 .card {
     padding: 20px;
     border-radius: 10px;
-    max-width: 80%;
     display: flex;
     align-items: center;
     margin-bottom: 32px;
+}
+
+.card-container > .card img {
+    height: 350px;
 }
 
 .card-details {
@@ -100,10 +107,10 @@
     text-align: center;
     border-radius: 10px;
     padding: 10px;
+    width: 40%;
 }
 
-.more-cards .card img {
-    max-width: 30%;
-    max-height: 90%;
+.more-cards > .card img {
+    height: 200px;
     margin-left: 10px;
 }

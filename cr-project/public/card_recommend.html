@@ -59,44 +59,190 @@
     <!--================== 카드 추천 ===================-->
     <main>
         <div class="title">
-            <h1>카드 추천</h1>
+            <h1><a href="card_recommend.html">카드 추천</a></h1>
         </div>
         
         <div class="container">
             <div class="heading">김홍익 님의 소비에 맞는 카드</div>
             <span></span>
             <div class="button-group">
-                <button>쇼핑 혜택 BEST</button>
-                <button>배달앱+간편결제 혜택 BEST</button>
-                <button>점심+교통 혜택 BEST</button>
-                <button>통신+공과금 혜택 BEST</button>
-                <button>편의점+카페 혜택 BEST</button>
-                <button>구독/스트리밍 혜택 BEST</button>
-            </div>
-            <div class="card-container">
-                <div class="card">
-                    <img src="card_data/etc/ibk_moonin.png" alt="카드 이미지">
-                    <div class="card-details">
-                        <div class="card-title">IBK 무민카드</div>
-                        <div class="card-description">온라인 쇼핑 20% 할인</div>
+                <button class="filter-button" onclick="selectButton(this); showCard('shopping')">쇼핑 혜택 BEST</button>
+                <button class="filter-button" onclick="selectButton(this); showCard('delivery_ez_payment')">배달앱+간편결제 혜택 BEST</button>
+                <button class="filter-button" onclick="selectButton(this); showCard('lunch_transport')">점심+교통 혜택 BEST</button>
+                <button class="filter-button" onclick="selectButton(this); showCard('telecom_utilities')">통신+공과금 혜택 BEST</button>
+                <button class="filter-button" onclick="selectButton(this); showCard('convenience_cafe')">편의점+카페 혜택 BEST</button>
+                <button class="filter-button" onclick="selectButton(this); showCard('streaming_subscription')">구독/스트리밍 혜택 BEST</button>
+            </div>            
+
+            <div id="card-display" class="card-display">
+                <!-- Default card display -->
+                <div class="card-container">
+                    <div class="card">
+                        <img src="card_data/hana/jade_classic.png" alt="JADE Classic">
+                        <div class="card-details">
+                            <div class="card-title">하나 JADE Classic 카드</div>
+                            <div class="card-description">온라인 쇼핑 20% 할인</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="subheading">
-                <p>비슷한 혜택 카드 더보기</p>
-                <span></span>
-            </div>
-            <div class="more-cards">
-                <div class="card">
-                    <img src="card_data/shinhan/unboxing.png" alt="신한카드 Unboxing">
-                    <div class="card-title">신한카드 Unboxing</div>
+                <div class="subheading">
+                    <p>비슷한 혜택 카드 더보기</p>
+                    <span></span>
                 </div>
-                <div class="card">
-                    <img src="card_data/samsung/taptap_shopping.png" alt="taptap SHOPPING">
-                    <div class="card-title">taptap SHOPPING</div>
+                <div class="more-cards">
+                    <div class="card">
+                        <img src="card_data/samsung/taptap_o.png" alt="taptap O">
+                        <div class="card-title">삼성 taptap O 카드</div>
+                    </div>
+                    <div class="card">
+                        <img src="card_data/samsung/id_on.png" alt="iD ON">
+                        <div class="card-title">삼성 iD ON 카드</div>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
+<script>
+    function selectButton(selectedButton) {
+        // 모든 버튼에서 active 클래스를 제거
+        const buttons = document.querySelectorAll('.filter-button');
+        buttons.forEach(button => button.classList.remove('active'));
+
+        // 클릭한 버튼에만 active 클래스를 추가
+        selectedButton.classList.add('active');
+    }
+    
+    function showCard(type) {
+        const cardDisplay = document.getElementById("card-display");
+        const moreCards = document.getElementById("more-cards");
+
+        let cardContent = "";
+        let moreCardContent = "";
+
+        if (type === "shopping") {
+            cardContent = `
+                <div class="card-container">
+                    <div class="card">
+                        <img src="card_data/hana/jade_classic.png" alt="JADE Classic">
+                        <div class="card-details">
+                            <div class="card-title">하나 JADE Classic 카드</div>
+                            <div class="card-description">온라인 쇼핑 20% 할인</div>
+                        </div>
+                    </div>
+                </div>`;
+            moreCardContent = `
+                <div class="card">
+                    <img src="card_data/samsung/taptap_o.png" alt="taptap O">
+                    <div class="card-title">삼성 taptap O 카드</div>
+                </div>
+                <div class="card">
+                    <img src="card_data/samsung/id_on.png" alt="iD ON">
+                    <div class="card-title">삼성 iD ON 카드</div>
+                </div>`;
+        } else if (type === "telecom_utilities") {
+            cardContent = `
+                <div class="card-container">
+                    <div class="card">
+                        <img src="card_data/samsung/id_simple.png" alt="iD SIMPLE">
+                        <div class="card-details">
+                            <div class="card-title">삼성 iD SIMPLE 카드</div>
+                            <div class="card-description">배달앱 결제 15% 할인</div>
+                        </div>
+                    </div>
+                </div>`;
+            moreCardContent = `
+                <div class="card">
+                    <img src="card_data/samsung/id_on.png" alt="iD ON">
+                    <div class="card-title">삼성 iD ON 카드</div>
+                </div>
+                <div class="card">
+                    <img src="card_data/hana/wonder_life.png" alt="원더(원더 Life)">
+                    <div class="card-title">하나 원더(원더 Life)카드</div>
+                </div>`;
+        } else if (type === "lunch_transport") {
+            cardContent = `
+                <div class="card-container">
+                    <div class="card">
+                        <img src="card_data/shinhan/mr.life.png" alt="Mr.Life">
+                        <div class="card-details">
+                            <div class="card-title">신한 Mr.Life 카드</div>
+                            <div class="card-description">배달앱 결제 15% 할인</div>
+                        </div>
+                    </div>
+                </div>`;
+            moreCardContent = `
+                <div class="card">
+                    <img src="card_data/shinhan/first.png" alt="처음">
+                    <div class="card-title">신한 처음 카드</div>
+                </div>
+                <div class="card">
+                    <img src="card_data/kb/goodday.png" alt="굿데이올림">
+                    <div class="card-title">KB국민 굿데이올림 카드</div>
+                </div>`;
+        } else if (type === "streaming_subscription") {
+            cardContent = `
+                <div class="card-container">
+                    <div class="card">
+                        <img src="card_data/shinhan/mr.life.png" alt="Mr.Life">
+                        <div class="card-details">
+                            <div class="card-title">신한 Mr.Life 카드</div>
+                            <div class="card-description">배달앱 결제 15% 할인</div>
+                        </div>
+                    </div>
+                </div>`;
+            moreCardContent = `
+                <div class="card">
+                    <img src="card_data/samsung/taptap_o.png" alt="taptap O">
+                    <div class="card-title">삼성 taptap O 카드</div>
+                </div>
+                <div class="card">
+                    <img src="card_data/kb/dadam.png" alt="다담">
+                    <div class="card-title">KB국민 다담카드</div>
+                </div>`;
+        } else if (type === "delivery_ez_payment") {
+            cardContent = `
+                <div class="card-container">
+                    <div class="card">
+                        <img src="card_data/hana/jade_prime.png" alt="JADE Prime">
+                        <div class="card-details">
+                            <div class="card-title">하나 JADE Prime 카드</div>
+                            <div class="card-description">배달앱 결제 15% 할인</div>
+                        </div>
+                    </div>
+                </div>`;
+            moreCardContent = `
+                <div class="card">
+                    <img src="card_data/hana/jade_classic.png" alt="JADE Classic">
+                    <div class="card-title">하나 JADE Classic 카드</div>
+                </div>
+                <div class="card">
+                    <img src="card_data/samsung/id_nomad.png" alt="iD NOMAD">
+                    <div class="card-title">삼성 iD NOMAD 카드</div>
+                </div>`;
+        } else if (type === "convenience_cafe") {
+            cardContent = `
+                <div class="card-container">
+                    <div class="card">
+                        <img src="card_data/hana/jade_classic.png" alt="JADE Classic">
+                        <div class="card-details">
+                            <div class="card-title">하나 JADE Classic 카드</div>
+                            <div class="card-description">배달앱 결제 15% 할인</div>
+                        </div>
+                    </div>
+                </div>`;
+            moreCardContent = `
+                <div class="card">
+                    <img src="card_data/hana/jade_prime.png" alt="JADE Prime">
+                    <div class="card-title">하나 JADE Prime 카드</div>
+                </div>
+                <div class="card">
+                    <img src="card_data/samsung/id_global.png" alt="iD GLOBAL">
+                    <div class="card-title">삼성 iD GLOBAL 카드</div>
+                </div>`;
+        }
+
+        cardDisplay.innerHTML = cardContent + `<div class="subheading"><p>비슷한 혜택 카드 더보기</p><span></span></div>` + `<div class="more-cards">${moreCardContent}</div>`;
+    }
+</script>
 </body>
 </html>
