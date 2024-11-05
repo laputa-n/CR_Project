@@ -80,7 +80,7 @@
                     <div class="card">
                         <img src="card_data/hana/jade_classic.png" alt="JADE Classic">
                         <div class="card-details">
-                            <div class="card-title">하나 JADE Classic 카드</div>
+                            <div class="card-title">JADE Classic</div>
                             <div class="card-description">온라인 쇼핑 20% 할인</div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                 <div class="more-cards">
                     <div class="card">
                         <img src="card_data/samsung/taptap_o.png" alt="taptap O">
-                        <div class="card-title">삼성 taptap O 카드</div>
+                        <div class="card-title">삼성카드 taptap O</div>
                     </div>
                     <div class="card">
                         <img src="card_data/samsung/id_on.png" alt="iD ON">
@@ -111,7 +111,7 @@
         // 클릭한 버튼에만 active 클래스를 추가
         selectedButton.classList.add('active');
     }
-    
+
     function showCard(type) {
         const cardDisplay = document.getElementById("card-display");
         const moreCards = document.getElementById("more-cards");
@@ -125,7 +125,7 @@
                     <div class="card">
                         <img src="card_data/hana/jade_classic.png" alt="JADE Classic">
                         <div class="card-details">
-                            <div class="card-title">하나 JADE Classic 카드</div>
+                            <div class="card-title">JADE Classic</div>
                             <div class="card-description">온라인 쇼핑 20% 할인</div>
                         </div>
                     </div>
@@ -133,7 +133,7 @@
             moreCardContent = `
                 <div class="card">
                     <img src="card_data/samsung/taptap_o.png" alt="taptap O">
-                    <div class="card-title">삼성 taptap O 카드</div>
+                    <div class="card-title">삼성카드 taptap O</div>
                 </div>
                 <div class="card">
                     <img src="card_data/samsung/id_on.png" alt="iD ON">
@@ -143,10 +143,10 @@
             cardContent = `
                 <div class="card-container">
                     <div class="card">
-                        <img src="card_data/samsung/id_simple.png" alt="iD SIMPLE">
+                        <img src="card_data/shinhan/mr.life.png" alt="Mr.Life">
                         <div class="card-details">
-                            <div class="card-title">삼성 iD SIMPLE 카드</div>
-                            <div class="card-description">배달앱 결제 15% 할인</div>
+                            <div class="card-title">신한카드 Mr.Life</div>
+                            <div class="card-description">공과금 10% 할인</div>
                         </div>
                     </div>
                 </div>`;
@@ -157,7 +157,7 @@
                 </div>
                 <div class="card">
                     <img src="card_data/hana/wonder_life.png" alt="원더(원더 Life)">
-                    <div class="card-title">하나 원더(원더 Life)카드</div>
+                    <div class="card-title">원더카드 (원더 Life)</div>
                 </div>`;
         } else if (type === "lunch_transport") {
             cardContent = `
@@ -165,39 +165,39 @@
                     <div class="card">
                         <img src="card_data/shinhan/mr.life.png" alt="Mr.Life">
                         <div class="card-details">
-                            <div class="card-title">신한 Mr.Life 카드</div>
-                            <div class="card-description">배달앱 결제 15% 할인</div>
+                            <div class="card-title">신한카드 Mr.Life</div>
+                            <div class="card-description">마트, 식음료 10% 할인</div>
+                        </div>
+                    </div>
+                </div>`;
+            moreCardContent = `
+                <div class="card">
+                    <img src="card_data/kb/dadam.png" alt="다담">
+                    <div class="card-title">다담카드</div>
+                </div>
+                <div class="card">
+                    <img src="card_data/kb/goodday.png" alt="굿데이올림">
+                    <div class="card-title">굿데이올림카드</div>
+                </div>`;
+        } else if (type === "streaming_subscription") {
+            cardContent = `
+                <div class="card-container">
+                    <div class="card">
+                        <img src="card_data/kb/myWESH.png" alt="My WE:SH">
+                        <div class="card-details">
+                            <div class="card-title">KB국민 My WE:SH 카드</div>
+                            <div class="card-description">OTT 30% 할인</div>
                         </div>
                     </div>
                 </div>`;
             moreCardContent = `
                 <div class="card">
                     <img src="card_data/shinhan/first.png" alt="처음">
-                    <div class="card-title">신한 처음 카드</div>
+                    <div class="card-title">신한카드 처음</div>
                 </div>
                 <div class="card">
-                    <img src="card_data/kb/goodday.png" alt="굿데이올림">
-                    <div class="card-title">KB국민 굿데이올림 카드</div>
-                </div>`;
-        } else if (type === "streaming_subscription") {
-            cardContent = `
-                <div class="card-container">
-                    <div class="card">
-                        <img src="card_data/shinhan/mr.life.png" alt="Mr.Life">
-                        <div class="card-details">
-                            <div class="card-title">신한 Mr.Life 카드</div>
-                            <div class="card-description">배달앱 결제 15% 할인</div>
-                        </div>
-                    </div>
-                </div>`;
-            moreCardContent = `
-                <div class="card">
-                    <img src="card_data/samsung/taptap_o.png" alt="taptap O">
-                    <div class="card-title">삼성 taptap O 카드</div>
-                </div>
-                <div class="card">
-                    <img src="card_data/kb/dadam.png" alt="다담">
-                    <div class="card-title">KB국민 다담카드</div>
+                    <img src="card_data/hana/jade_classic.png" alt="JADE Classic">
+                    <div class="card-title">JADE Classic</div>
                 </div>`;
         } else if (type === "delivery_ez_payment") {
             cardContent = `
@@ -205,7 +205,7 @@
                     <div class="card">
                         <img src="card_data/hana/jade_prime.png" alt="JADE Prime">
                         <div class="card-details">
-                            <div class="card-title">하나 JADE Prime 카드</div>
+                            <div class="card-title">JADE Prime</div>
                             <div class="card-description">배달앱 결제 15% 할인</div>
                         </div>
                     </div>
@@ -213,7 +213,7 @@
             moreCardContent = `
                 <div class="card">
                     <img src="card_data/hana/jade_classic.png" alt="JADE Classic">
-                    <div class="card-title">하나 JADE Classic 카드</div>
+                    <div class="card-title">JADE Classic</div>
                 </div>
                 <div class="card">
                     <img src="card_data/samsung/id_nomad.png" alt="iD NOMAD">
@@ -223,21 +223,21 @@
             cardContent = `
                 <div class="card-container">
                     <div class="card">
-                        <img src="card_data/hana/jade_classic.png" alt="JADE Classic">
+                        <img src="card_data/kb/myWESH.png" alt="My WE:SH">
                         <div class="card-details">
-                            <div class="card-title">하나 JADE Classic 카드</div>
-                            <div class="card-description">배달앱 결제 15% 할인</div>
+                            <div class="card-title">KB국민 My WE:SH 카드</div>
+                            <div class="card-description">음식점, 편의점 10% 할인</div>
                         </div>
                     </div>
                 </div>`;
             moreCardContent = `
                 <div class="card">
-                    <img src="card_data/hana/jade_prime.png" alt="JADE Prime">
-                    <div class="card-title">하나 JADE Prime 카드</div>
+                    <img src="card_data/samsung/taptap_o.png" alt="taptap O">
+                    <div class="card-title">삼성카드 taptap O</div>
                 </div>
                 <div class="card">
-                    <img src="card_data/samsung/id_global.png" alt="iD GLOBAL">
-                    <div class="card-title">삼성 iD GLOBAL 카드</div>
+                    <img src="card_data/shinhan/first.png" alt="처음">
+                    <div class="card-title">신한카드 처음</div>
                 </div>`;
         }
 

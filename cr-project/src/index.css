@@ -219,6 +219,10 @@ img {
   margin: 5% 0 0 5%;
 }
 
+h1 a {
+  color: black;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -290,8 +294,6 @@ img {
   background: rgba(181.72, 207.17, 255, 0.50);
   border-radius: 4px;
 }
-
-
 
 .section-list label {
   padding-left: 10px;
