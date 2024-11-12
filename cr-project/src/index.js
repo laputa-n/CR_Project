@@ -1,5 +1,5 @@
 // import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 // import ReactDOM from 'react-dom/client';
 // import reportWebVitals from './reportWebVitals';
 import './index.css';
@@ -88,49 +88,27 @@ loginClose.addEventListener('click', function(event) {
 
 
 /* =================== 카카오 로그인 ==================== */
+document.getElementById("kakao-login-btn").addEventListener("click", function () {
+  const kakaoParams = {
+    client_id: "e66e5234504f77fe52966a18dc0ebeea",
+    redirect_uri: "http://127.0.0.1:8000/api/v1/users/kakao/callback",
+    response_type: "code",
+  };
+  const kParams = new URLSearchParams(kakaoParams).toString();
 
+  // 카카오 로그인 페이지로 리다이렉트
+  window.location.href = `https://kauth.kakao.com/oauth/authorize?${kParams}`;
+});
 
-/* global Kakao */
-
-// 카카오 SDK 초기화
-Kakao.init('43b4b0d0b84ebc052b5575bb698a13df'); // 카카오 앱의 JavaScript 키로 초기화
-
-    document.getElementById('kakao-login-btn').addEventListener('click', function() {
-      Kakao.Auth.login({
-        success: function(authObj) {
-          Kakao.API.request({
-            url: '/v2/user/me',
-            success: function(res) {
-              console.log(res);
-              const id_token = authObj.access_token;
-              console.log('Access Token: ' + id_token);
-
-              // 서버로 ID 토큰을 보내서 인증
-              fetch('/tokensignin', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ idtoken: id_token })
-              })
-              .then(response => response.text())
-              .then(data => {
-                console.log(data);
-              })
-              .catch(error => {
-                console.error('Error:', error);
-              });
-            },
-            fail: function(error) {
-              console.log(error);
-            }
-          });
-        },
-        fail: function(err) {
-          console.log(err);
-        }
-      });
-    });
+export const kakaoLogIn = async (code) => {
+  try {
+    const response = await axios.post(`http://127.0.0.1:8000/api/v1/users/kakao`, { code });
+    return response.status; // 성공 시 상태 코드를 반환
+  } catch (error) {
+    console.error("Kakao login failed:", error);
+    throw error; // 에러를 호출한 곳으로 전달
+  }
+};
 
 
 /* =================== 회원가입 ==================== */
