@@ -23,13 +23,6 @@ h1 a {
   font-size: 30px;
 }
 
-/* .profile__icon {
-  width: 50px;
-  height: 50px;
-  margin-left: -10px;
-  margin-bottom: -5px;
-} */
-
 .profile__title {
   font-size: 20px;
   font-weight: bold;
@@ -74,15 +67,6 @@ h1 a {
   width: calc(100% - 22px);
 }
 
-.delete__account {
-  background-color: #ff4d4d;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
 .save__profile {
   background-color: #000;
   color: white;
@@ -93,6 +77,15 @@ h1 a {
   font-weight: bold;
 }
 
-#gender {
+.delete__account {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#male, #female {
   width: 8%;
 }

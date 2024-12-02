@@ -3,16 +3,16 @@
 
 /*=================== CSS 설정 ====================*/
 :root {
-    /*============ 색상 =============*/
-    /*Color mode HSL(hue, saturation, lightness)*/
-    --title-color: hsl(230, 75%, 15%);
-    --text-color: hsl(225, 3%, 24%);
-    --body-color: hsl(0, 0%, 98%);
-    --container-color: hsl(230, 100%, 97%);
-    --border-color: hsl(230, 25%, 80%);
+  /*============ 색상 =============*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --title-color: hsl(230, 75%, 15%);
+  --text-color: hsl(225, 3%, 24%);
+  --body-color: hsl(0, 0%, 98%);
+  --container-color: hsl(230, 100%, 97%);
+  --border-color: hsl(230, 25%, 80%);
 
-    /*============ 폰트 =============*/
-    --body-font: "Noto Sans KR", sans-serif;
+  /*============ 폰트 =============*/
+  --body-font: "Noto Sans KR", sans-serif;
 }
 
 /*=================== 베이스 ====================*/
@@ -29,37 +29,36 @@ html {
 body,
 input,
 button {
-    font-family: var(--body-font);
-    font-size: 16px;
+  font-family: var(--body-font);
+  font-size: 16px;
 }
 
 body {
-    background-color: var(--body-color);
-    color: var(--text-color);
+  background-color: var(--body-color);
+  color: var(--text-color);
 }
 
 input,
 button {
-    border: none;
-    outline: none;
+  border: none;
+  outline: none;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;  
 }
 
 img {
-    display: block;
-    max-width: 100%;
-    height: auto;
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 /*=================== 재사용 CSS 클래스 ====================*/
-.search,
 .login {
   position: fixed;
   top: 0;
@@ -76,7 +75,6 @@ img {
   transition: opacity .4s;
 }
 
-.search__close,
 .login__close {
   position: absolute;
   top: 6rem;
@@ -94,7 +92,7 @@ img {
 /*=================== 헤더 & 네비게이션바 ====================*/
 .header {
   width: 100%;
-  height: 100%;
+  height: 80px;
   background-color: var(--body-color);
   box-shadow: 0 2px 16px hsla(230, 75%, 32%, .15);
   padding: 16px 0 16px 50px;
@@ -115,39 +113,21 @@ img {
   margin-left: -15px;
 }
 
-.nav__actions {
-  width: 50%;
-  height: 48px;
-  padding: 12px 16px 12px 16px;
-  margin-left: 10%;
-  border-radius: 9999px;
-  border: 2.5px black solid;
-  display: flex;
-}
-
 .nav__mypage {
   position: absolute;
-  right: 150px;
+  right: 165px;
 }
 
 .nav__menu {
   position: absolute;
-  right: 15px;
+  right: 30px;
 }
 
 .ri-arrow-down-s-line {
   font-size: 24px;
 }
 
-.nav__search {
-  flex: 1 1 0;
-  color: #697077;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 22.40px;
-}
-
-:is(.nav__search, .nav__mypage, .nav__menu, .mypage__btn, .menu__btn):hover {
+:is(.nav__mypage, .nav__menu, .mypage__btn, .menu__btn):hover {
   color: #697077;
 }
 
@@ -178,7 +158,12 @@ img {
   transform: translateX(-40%);
   border-radius: 8px;
   z-index: 1000;
-  cursor: pointer;
+}
+
+.show-menu {
+  display: block;
+  opacity: 1;
+  z-index: 1000;
 }
 
 .mypage__list a, .menu__list a {
@@ -191,15 +176,32 @@ img {
   word-wrap: break-word;
   padding: 12px 16px;
   display: block;
+  cursor: pointer;
+}
+
+.kakao__login {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: #f2f4f8;
+  color: black;
+  font-size: 16px;
+  font-weight: 500;
+  word-wrap: break-word;
+  padding: 12px 16px;
+  display: block;
+  cursor: pointer;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .mypage__list a:hover,
-.menu__list a:hover {
+.menu__list a:hover,
+.kakao__login:hover {
   color: #6499fd;
   font-weight: 600;
   background: rgba(181.72, 207.17, 255, 0.50);
   border-radius: 8px;
-
 }
 
 .show {

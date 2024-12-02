@@ -3,16 +3,16 @@
 
 /*=================== CSS 설정 ====================*/
 :root {
-    /*============ 색상 =============*/
-    /*Color mode HSL(hue, saturation, lightness)*/
-    --title-color: hsl(230, 75%, 15%);
-    --text-color: hsl(225, 3%, 24%);
-    --body-color: hsl(0, 0%, 98%);
-    --container-color: hsl(230, 100%, 97%);
-    --border-color: hsl(230, 25%, 80%);
+  /*============ 색상 =============*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --title-color: hsl(230, 75%, 15%);
+  --text-color: hsl(225, 3%, 24%);
+  --body-color: hsl(0, 0%, 98%);
+  --container-color: hsl(230, 100%, 97%);
+  --border-color: hsl(230, 25%, 80%);
 
-    /*============ 폰트 =============*/
-    --body-font: "Noto Sans KR", sans-serif;
+  /*============ 폰트 =============*/
+  --body-font: "Noto Sans KR", sans-serif;
 }
 
 /*=================== 베이스 ====================*/
@@ -63,7 +63,7 @@ img {
   width: 50%;
 }
 
-.search,
+/* .search, */
 .login {
   position: fixed;
   top: 0;
@@ -80,7 +80,7 @@ img {
   transition: opacity .4s;
 }
 
-.search__close,
+/* .search__close, */
 .login__close {
   position: absolute;
   top: 6rem;
@@ -98,7 +98,7 @@ img {
 /*=================== 헤더 & 네비게이션바 ====================*/
 .header {
   width: 100%;
-  height: 100%;
+  height: 80px;
   background-color: var(--body-color);
   box-shadow: 0 2px 16px hsla(230, 75%, 32%, .15);
   padding: 16px 0 16px 50px;
@@ -119,47 +119,21 @@ img {
   margin-left: -15px;
 }
 
-.nav__logo p {
-  display: inline;
-  color: black;
-  font-size: 28px;
-  font-weight: 600;
-  margin-left: 70px;
-}
-
-.nav__actions {
-  width: 50%;
-  height: 48px;
-  padding: 12px 16px 12px 16px;
-  margin-left: 10%;
-  border-radius: 9999px;
-  border: 2.5px black solid;
-  display: flex;
-}
-
 .nav__mypage {
   position: absolute;
-  right: 150px;
+  right: 165px;
 }
 
 .nav__menu {
   position: absolute;
-  right: 15px;
+  right: 30px;
 }
 
 .ri-arrow-down-s-line {
   font-size: 24px;
 }
 
-.nav__search {
-  flex: 1 1 0;
-  color: #697077;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 22.40px;
-}
-
-:is(.nav__search, .nav__mypage, .nav__menu, .mypage__btn, .menu__btn):hover {
+:is(.nav__mypage, .nav__menu, .mypage__btn, .menu__btn):hover {
   color: #697077;
 }
 
@@ -190,7 +164,12 @@ img {
   transform: translateX(-40%);
   border-radius: 8px;
   z-index: 1000;
-  cursor: pointer;
+}
+
+.show-menu {
+  display: block;
+  opacity: 1;
+  z-index: 1000;
 }
 
 .mypage__list a, .menu__list a {
@@ -203,10 +182,28 @@ img {
   word-wrap: break-word;
   padding: 12px 16px;
   display: block;
+  cursor: pointer;
+}
+
+.kakao__login {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: #f2f4f8;
+  color: black;
+  font-size: 16px;
+  font-weight: 500;
+  word-wrap: break-word;
+  padding: 12px 16px;
+  display: block;
+  cursor: pointer;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .mypage__list a:hover,
-.menu__list a:hover {
+.menu__list a:hover,
+.kakao__login:hover {
   color: #6499fd;
   font-weight: 600;
   background: rgba(181.72, 207.17, 255, 0.50);
@@ -265,13 +262,19 @@ h1 a {
 }
 
 
-.prev-age i, .next-age i {
+.prev-button i, .next-button i {
   margin-top: 5px;
   font-size: large;
 }
 
-.age-dropdown-menu {
-  width: 120px;
+.ranking-dropdown {
+  display: flex;
+  justify-content: center;
+}
+
+.ranking-dropdown-menu {
+  min-width: 120px;
+  width: fit-content;
   font-weight: 500;
   display: none;
   position: absolute;
@@ -282,16 +285,15 @@ h1 a {
   border-radius: 8px;
   padding: 0;
   margin-top: -25px;
-  margin-left: 130px;
   z-index: 1000;
 }
 
-.age-dropdown-menu li {
+.ranking-dropdown-menu li {
   padding: 15px 15px 10px;
   cursor: pointer;
 }
 
-.age-dropdown-menu li:hover {
+.ranking-dropdown-menu li:hover {
   color: #6499fd;
   font-size: large;
   background: rgba(181.72, 207.17, 255, 0.50);
@@ -450,331 +452,11 @@ h1 a {
 
 /*=================== 오버레이 ====================*/
 .overlay {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50%;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-}
-
-/*=================== 검색 ====================*/
-.search__form {
-  display: flex;
-  align-items: center;
-  column-gap: .5rem;
-  background-color: #F5F5F5;
-  box-shadow: 0 8px 32px hsla(230, 75%, 15%, .2);
-  padding-inline: 1rem;
-  border-radius: .5rem;
-  transform: translateY(-1rem);
-  transition: transform .4s;
-  width: 80%;
-
-}
-
-.search__icon {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--title-color);
-}
-
-.search__input {
-  width: 50%;
-  padding-block: 1rem;
-  background-color: #F5F5F5;
-  color: var(--text-color);
-}
-
-.search__input::placeholder {
-  font-weight: 500;
-  color: var(--text-color);
-}
-
-/* 검색 보이기 */
-.show-search {
-  opacity: 1;
-  pointer-events: initial;
-}
-
-.show-search .search__form {
-  transform: translateY(0);
-}
-
-/*=================== 로그인 ====================*/
-.login {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.login__form {
-  display: grid;
-  width: fit-content;
-  margin-top: 20%;
-  padding-top: 32px;
-  padding-bottom: 48px;
-  padding-left: 80px;
-  padding-right: 80px;
-  border: 2px #DDE1E6 solid;
-  border-radius: 32px;
-  row-gap: 18px;
-  text-align: center;
-}
-
-.login__title {
-  font-size: 32px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.login__group label {
-  display: block;
-  margin-left: 5px;
-  margin-bottom: 10px;
-  font-size: 18px;
-  font-weight: sembold;
-  line-height: 19.60px;
-  text-align: left;
-}
-
-.login__group input {
-  width: 100%;
-  padding: 16px;
-  background-color: #f2f4f8;
-  border-radius: 10px;
-  border-bottom: 2px #c1c7cd solid;
-  font-size: 16px;
-  margin-bottom: 5px;
-}
-
-.login__group input:focus {
-  border-color: black;
-}
-
-.login__option {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.login__option input {
-  position: relative;
-  top: 33px;
-  right: 50%;
-  cursor: pointer;
-}
-
-.login__option p {
-  transform: translateY(-5px);
-  margin-left: 20px;
-  margin-right: 48px;
-  font-size: 16px;
-  font-weight: 400;
-  color: black;
-}
-
-.id__forget,
-.pw__forget {
-  font-size: 16px;
-  font-weight: 400;
-  color: black;
-}
-
-.separator {
-  font-size: 11px;
-  font-weight: 500;
-  margin: 0 8px; /* 좌우 여백 설정 */
-  position: relative;
-  top: -1.5px;
-}
-
-.login__button {
-  width: 100%;
-  height: 64px;
-  padding: 10px;
-  background-color: black;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-size: 22px;
-  font-weight: 500;
-  cursor: pointer;
-  margin-bottom: 48px;
-}
-
-.signup__link {
-  text-align: center;
-  font-size: 18px;
-  font-weight: 500;
-}
-
-.signup__link a {
-  margin-left: 10px;
-}
-
-.id__forget:hover,
-.pw__forget:hover,
-.signup__link a:hover {
-  opacity: 70%;
-  cursor: pointer;
-}
-
-/*=================== 소셜 로그인 ====================*/
-.divider {
-  font-size: 18px;
-  font-weight: 500;
-}
-
-.social__button {
-  margin-top: 32px;
-  margin-bottom: 32px;
-  margin-left: 10px;
-}
-
-.signup__social__button {
-  margin-top: 32px;
-  margin-left: 10px;
-}
-
-.kakao__login {
-  background-color: white;
-  color: #3c1e1e;
-  border: none;
-  cursor: pointer;
-}
-
-.kakao__login img {
-  width: 100%;
-  height: 64px;
-}
-
-.kakao__login:hover {
-  opacity: 70%;
-}
-
-/*=================== 회원가입 ====================*/
-.signup__form {
-  display: grid;
-  width: fit-content;
-  margin-top: 90%;
-  padding-top: 32px;
-  padding-bottom: 48px;
-  padding-left: 80px;
-  padding-right: 80px;
-  border: 2px #DDE1E6 solid;
-  border-radius: 32px;
-  row-gap: 18px;
-  text-align: center;
-}
-
-.signup__title {
-  font-size: 32px;
-  font-weight: bold;
-  margin-bottom: 40px;
-  text-align: center;
-}
-
-.signup__group label {
-  display: block;
-  margin-left: 5px;
-  margin-bottom: 10px;
-  font-size: 18px;
-  font-weight: sembold;
-  line-height: 19.60px;
-  text-align: left;
-}
-
-.signup__group input {
-  width: 100%;
-  padding: 16px;
-  align-self: stretch;
-  background: #f2f4f8;
-  border-radius: 10px;
-  border-bottom: 2px #c1c7cd solid;
-  font-size: 16px;
-  margin-bottom: 20px;
-}
-
-.signup__group input:focus {
-  border-color: black;
-}
-
-.password__container {
-  position: relative;
-}
-
-.password__toggle {
-  position: absolute;
-  right: 10px;
-  top: 14px;
-  background: none;
-  cursor: pointer;
-}
-
-.password__hint {
-  font-size: 16px;
-  text-align: left;
-  margin-left: 5px;
-  transform: translateY(-16px);
-}
-
-.signup__option {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.signup__option input {
-  position: relative;
-  color: black;
-  cursor: pointer;
-  margin-right: 10px;
-}
-
-.signup__button {
-  width: 100%;
-  height: 64px;
-  padding: 10px;
-  background-color: black;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-size: 22px;
-  font-weight: 500;
-  cursor: pointer;
-  margin-bottom: 20px;
-}
-
-.login__link {
-  text-align: center;
-  font-size: 18px;
-  font-weight: 500;
-}
-
-.login__link a:hover {
-  opacity: 70%;
-  cursor: pointer;
-}
-
-.login__button:hover,
-.signup__button:hover {
-  opacity: 80%;
-}
-
-/* 로그인 보이기 */
-.show-login {
-  opacity: 1;
-  pointer-events: initial;
-}
-
-/* 회원가입 감추기 */
-.hidden {
+  height: 100%;
+  z-index: 10;
   display: none;
 }

@@ -24,21 +24,11 @@
             </a>
         </nav>
   
-        <div class="nav__actions" id="search-btn">
-          <div>
-            <i class="ri-search-line"></i>
-          </div>
-          <div class="nav__search">검색어를 입력하세요.</div>
-          <div>
-            <i class="ri-arrow-down-s-line"></i>
-          </div>
-        </div>
-  
         <div class="nav__mypage" id="nav-mypage">
           <div class="mypage">
             <button class="mypage__btn" onclick="toggleDropdown('mypage-list')">마이페이지</button>
             <div class="mypage__list" id="mypage-list">
-              <a href="#" class="mypage__login" id="login-btn">로그인</a>
+                <button type="button" class="kakao__login" id="kakao-login-btn">로그인</button>
               <a href="profile.html">프로필</a>
             </div>
           </div>
@@ -47,7 +37,7 @@
           <div class="menu">
             <button class="menu__btn" onclick="toggleDropdown('menu-list')">메뉴</button>
             <div class="menu__list" id="menu-list">
-              <a href="report.html">분석 리포트</a>
+              <a href="report.html" id="report-btn">분석 리포트</a>
               <a href="card_recommend.html">카드 추천</a>
             </div>
           </div>
@@ -64,7 +54,7 @@
     <div class="container">
         <div class="report-header">
             <div class="report-month">
-                <h2>10월</h2>
+                <h2>11월</h2>
                 <div class="total-amount">
                     1,434,336원</div>
                 <div class="chart">
@@ -75,23 +65,6 @@
             <div class="analysis">
                 <h2>김홍익 님의 소비패턴 분석</h2>
                 <span></span>
-                <select id="cardSelect" onchange="updateChartAndCategories()">
-                    <option value="all">카드선택</option>
-                    <option>신한카드</option>
-                    <option>KB국민카드</option>
-                    <option>삼성카드</option>
-                    <option>하나카드</option>
-                </select>
-                <select id="categorySelect" onchange="updateChartAndCategories()">
-                    <option value="all">카테고리 선택</option>     
-                    <option value="쇼핑">쇼핑</option>
-                    <option value="배달앱+간편결제">배달앱+간편결제</option>
-                    <option value="점심+교통">점심+교통</option>
-                    <option value="통신+공과금">통신+공과금</option>
-                    <option value="편의점+카페">편의점+카페</option>
-                    <option value="구독/스트리밍">구독/스트리밍</option>
-                </select>
-            
         
                 <div id="categoryList" class="details">
                     <p>
@@ -134,36 +107,10 @@
         <div class="cta">
             <p>김홍익 님의 <span>소비패턴</span>에 딱 맞는</p>
             <p>카드 추천 받기</p>
-            <div class="footer">
-                <a href="card_recommend.html">카드 추천</a>
+            <a href="card_recommend.html"><div class="footer">
+                <p>카드 추천</p>
                 <span><i class="ri-arrow-right-s-line"></i></span>
-            </div>
-        </div>
-        
-        <div class="arrow">
-            <i class="ri-arrow-down-double-line"></i>
-        </div>
-        
-        <div class="cta">
-            <p><span>비슷한 연령대</span>의 사람들이</p>
-            <p>많이 쓰는 카드 추천 받기</p>
-            <div class="footer">
-                <a href="card_recommend.html">카드 추천</a>
-                <span><i class="ri-arrow-right-s-line"></i></span>
-            </div>
-        </div>
-        
-        <div class="arrow">
-            <i class="ri-arrow-down-double-line"></i>
-        </div>
-        
-        <div class="cta">
-            <p><span>비슷한 소득</span>의 사람들이</p>
-            <p>많이 쓰는 카드 추천 받기</p>
-            <div class="footer">
-                <a href="card_recommend.html">카드 추천</a>
-                <span><i class="ri-arrow-right-s-line"></i></span>
-            </div>
+            </div></a>
         </div>
     </div>
 
@@ -211,7 +158,7 @@
                             size: 20 // 툴팁 폰트 크기
                         },
                         titleFont: {
-                            size: 20 // 툴팁 제목 폰트 크기 (필요 시)
+                            size: 20 // 툴팁 제목 폰트 크기
                         }
                     }
                 }
@@ -219,36 +166,9 @@
         });
     }
 
-    // 필터에 따라 차트와 카테고리 목록을 업데이트하는 함수
-    function updateChartAndCategories() {
-        const selectedCard = document.getElementById("cardSelect").value;
-        const selectedCategory = document.getElementById("categorySelect").value;
-
-        let filteredCategories = categoryData.categories;
-
-        if (selectedCategory !== 'all') {
-            filteredCategories = filteredCategories.filter(category => category.name === selectedCategory);
-        }
-
-        // 오른쪽의 카테고리 목록 업데이트
-        const categoryList = document.getElementById("categoryList");
-        categoryList.innerHTML = "";
-        filteredCategories.forEach(category => {
-            const listItem = document.createElement("p");
-            listItem.innerHTML = `<i class="ri-arrow-right-circle-fill"></i><span>${category.name}</span><div class="rate">${category.percentage}% | ${category.amount.toLocaleString()}원</div>`;
-            categoryList.appendChild(listItem);
-        });
-
-        // 파이 차트 업데이트
-        pieChart.data.labels = filteredCategories.map(category => category.name);
-        pieChart.data.datasets[0].data = filteredCategories.map(category => category.amount);
-        pieChart.update();
-    }
-
     // 페이지 로드 시 차트를 초기화하고 카테고리 목록을 채우는 이벤트 리스너
     document.addEventListener("DOMContentLoaded", () => {
         initializeChart();
-        updateChartAndCategories();
     });
 </script>
 </body>
